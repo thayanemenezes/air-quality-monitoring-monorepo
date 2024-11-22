@@ -7,7 +7,7 @@ Este repositório contém dois projetos interconectados para monitoramento da qu
 Este repositório é um monorepositório gerido pelo **Turborepo**, que organiza o código em pacotes separados para a API e o Dashboard:
 
 - **apps/backend**: API que recebe os dados dos dispositivos embarcados, processa e armazena no banco de dados. Também fornece endpoints para o Dashboard.
-- **apps/frontend**: Dashboard visual para exibir os dados ambientais coletados pela API, com gráficos e tabelas para visualização em tempo real.
+- **apps/frontend**: Dashboard visual para exibir os dados ambientais coletados pela API, com gráficos e tabelas para visualização dos dados, atualizados a cada 30min.
 
 ## Funcionalidades
 
