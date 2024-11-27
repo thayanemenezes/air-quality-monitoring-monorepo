@@ -1,81 +1,80 @@
-# Turborepo starter
+# Air Quality Monitoring System
 
-This is an official starter Turborepo.
+Este repositório contém dois projetos interconectados para monitoramento da qualidade do ar em tempo real, gerenciados usando **Turborepo**. O sistema é composto por uma API que coleta e processa os dados ambientais capturados por um dispositivo embarcado (como o ESP32 com sensores DHT11 e MQ-135), e um painel de controle (Dashboard) para exibir as informações de qualidade do ar.
 
-## Using this example
+## Estrutura do Repositório
 
-Run the following command:
+Este repositório é um monorepositório gerido pelo **Turborepo**, que organiza o código em pacotes separados para a API e o Dashboard:
 
-```sh
-npx create-turbo@latest
-```
+- **apps/backend**: API que recebe os dados dos dispositivos embarcados, processa e armazena no banco de dados. Também fornece endpoints para o Dashboard.
+- **apps/frontend**: Dashboard visual para exibir os dados ambientais coletados pela API, com gráficos e tabelas para visualização dos dados, atualizados a cada 30min.
 
-## What's inside?
+## Funcionalidades
 
-This Turborepo includes the following packages/apps:
+### API (Backend)
 
-### Apps and Packages
+- Recebe dados ambientais de sensores DHT11 e MQ-135 via HTTP.
+- Armazena dados no banco de dados para consultas futuras.
+- Fornece endpoints HTTP para o Dashboard consumir os dados em tempo real.
+- Implementação de autenticação e controle de acesso.
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Dashboard (Frontend)
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- Interface visual para exibir os dados de qualidade do ar.
+- Gráficos e tabelas com dados de temperatura, umidade e concentração de gases.
+- Conexão com a API para exibição de dados ao vivo.
+- Atualização automática das informações.
 
-### Utilities
+## Como Usar
 
-This Turborepo has some additional tools already setup for you:
+### Configuração do Ambiente
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+1. Clone o repositório:
+    ```bash
+    git clone https://github.com/thayanemenezes/air-quality-monitoring-monorepo.git
+    cd air-quality-monitoring-monorepo
+    ```
 
-### Build
+2. Instale as dependências do Turborepo:
+    ```bash
+    npm install
+    ```
 
-To build all apps and packages, run the following command:
+    O **Turborepo** irá instalar as dependências de todos os pacotes (backend e frontend) de forma otimizada.
 
-```
-cd my-turborepo
-pnpm build
-```
+3. Configuração das variáveis de ambiente:
+   - No backend, configure as variáveis de ambiente, como a URL do banco de dados e outras configurações específicas da API.
+   - No frontend, configure a URL da API para que o Dashboard consiga consumir os dados corretamente.
 
-### Develop
+### Rodando a Aplicação
 
-To develop all apps and packages, run the following command:
+1. **Rodando o Backend (API)**:
+   - Para iniciar o servidor da API, utilize o comando do **Turborepo** para rodar a aplicação do backend:
+     ```bash
+     npm run dev --filter backend
+     ```
 
-```
-cd my-turborepo
-pnpm dev
-```
+2. **Rodando o Frontend (Dashboard)**:
+   - Para iniciar o servidor do Dashboard, use o comando do **Turborepo** para rodar a aplicação frontend:
+     ```bash
+     npm run dev --filter frontend
+     ```
 
-### Remote Caching
+   - Acesse o painel do Dashboard no navegador:
+     ```text
+     http://localhost:3000
+     ```
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+### Enviando Dados do Dispositivo Embarcado
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+- O sistema embarcado (ESP32 com sensores DHT11 e MQ-135) deve ser configurado para enviar os dados ambientais para a API a cada 30 minutos, conforme descrito no projeto do dispositivo.
+- Certifique-se de que o dispositivo embarcado está conectado à mesma rede Wi-Fi e que a URL da API está corretamente configurada.
 
-```
-cd my-turborepo
-npx turbo login
-```
+---
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## Considerações Finais
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+- **Segurança**: O projeto inicial utiliza HTTP para comunicação com a API. Para maior segurança e desempenho, considere migrar para HTTPS ou MQTT em versões futuras.
+- **Escalabilidade**: O sistema pode ser expandido para suportar múltiplos dispositivos embarcados e maior volume de dados.
+- **Integração de Sensores**: Embora este sistema seja configurado para os sensores **DHT11** e **MQ-135**, ele pode ser facilmente adaptado para outros sensores de qualidade do ar.
 
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)

@@ -1,6 +1,8 @@
 import SensorData from '../models/sensor.js';
 
 export const saveSensorData = async (request, reply) => {
+  console.log(request);
+  
   try {
     const sensorPayload = request.body;
 
@@ -100,3 +102,4 @@ export const updateSensorData = async (request, reply) => {
     reply.status(500).send({ message: 'Erro ao atualizar os dados', error: error.message });
   }
 };
+

@@ -40,8 +40,8 @@ const sensorDataSchema = new mongoose.Schema({
   alerts: {
     status: {
       type: String,
-      enum: ['ok', 'warning', 'critical'],
-      default: 'ok', 
+      enum: ['clear', 'warning', 'critical'],
+      default: 'clear', 
     },
     messages: [String], 
   },
