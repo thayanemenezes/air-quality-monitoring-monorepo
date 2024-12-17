@@ -1,5 +1,7 @@
 # Air Quality Monitoring System
 
+![Captura de tela 2024-11-26 233552](https://github.com/user-attachments/assets/d99f53bc-9f3c-4324-880d-58e3d2cf7ff6)
+
 Este repositório contém dois projetos interconectados para monitoramento da qualidade do ar em tempo real, gerenciados usando **Turborepo**. O sistema é composto por uma API que coleta e processa os dados ambientais capturados por um dispositivo embarcado (como o ESP32 com sensores DHT11 e MQ-135), e um painel de controle (Dashboard) para exibir as informações de qualidade do ar.
 
 ## Estrutura do Repositório
