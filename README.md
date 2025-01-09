@@ -1,4 +1,4 @@
-# Script Air Quality Monitoring in C++
+# Air Quality Monitoring Script in C++
 [Repositorie](https://github.com/thayanemenezes/air-quality-monitoring-script)
 
 
