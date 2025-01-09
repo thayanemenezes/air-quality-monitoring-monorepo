@@ -1,3 +1,6 @@
+# Script Air Quality Monitoring in C++
+[Repositorie](https://github.com/thayanemenezes/air-quality-monitoring-script)
+
 # Air Quality Monitoring System
 
 ![Captura de tela 2024-11-26 233552](https://github.com/user-attachments/assets/d99f53bc-9f3c-4324-880d-58e3d2cf7ff6)
